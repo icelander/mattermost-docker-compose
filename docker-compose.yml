@@ -65,5 +65,6 @@ services:
       - mmst_client_plugins:/mattermost/client/plugins # Client-side plugin components are stored here
     environment:
       # Use environment variables to set configuration: https://docs.mattermost.com/administration/config-settings.html#environment-variables
+      # MM_LICENSE = "Uncomment this line and replace this sentence with the contents of your .mattermost-license file to unlock enterprise features."
       MM_CONFIG: "postgres://${MM_DB_USER}:${MM_DB_PASSWORD}@${MM_DB_HOST}:${MM_DB_PORT}/${MM_DB_NAME}?sslmode=disable&connect_timeout=10"
       MM_SQL_SETTINGS_DATA_SOURCE: "postgres://mmuser:${MM_DB_PASSWORD}@${MM_DB_HOST}:${MM_DB_PORT}/${MM_DB_NAME}?sslmode=disable&connect_timeout=10"
