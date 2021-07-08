@@ -22,8 +22,8 @@ services:
     networks:
       - mattermost
     volumes:
-      - /vagrant/docker/nginx/templates:/etc/nginx/templates
-      - /vagrant/docker/nginx/ssl:/etc/nginx/certs:ro
+      - ./nginx/templates:/etc/nginx/templates
+      - ./nginx/ssl:/etc/nginx/certs:ro
     ports:
       - 80:80
       - 443:443
@@ -40,8 +40,6 @@ services:
       - mmst_db:/var/lib/postgresql/data
     networks:
       - mattermost
-    ports: 
-      - 5432:5432
     environment:
       POSTGRES_USER: ${MM_DB_USER}
       POSTGRES_PASSWORD: ${MM_DB_PASSWORD}
@@ -53,8 +51,6 @@ services:
       - "postgres"
       - "nginx"
     restart: unless-stopped
-    ports:
-      - 8067:8067 # Optional Prometheus monitoring port
     networks:
       - mattermost
     volumes:
